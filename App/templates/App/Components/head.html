@@ -1,0 +1,16 @@
+{% if request.user.is_authenticated %}
+         
+
+<h4 style="text-align:left;">
+    <i class="fas fa-user"></i> {{request.user}}
+    <span style="float:right;">
+        <a  href="/user-logout"><i class="fas fa-sign-out-alt"></i>Log Out </a>
+    </span>
+</h4>
+
+{% else %}
+<p>Not Authenticated <p>
+<a href="/user-login">Log In </a>
+{% endif %}
+
+<hr>

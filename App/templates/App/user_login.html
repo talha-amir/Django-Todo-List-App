@@ -1,0 +1,104 @@
+{% extends 'App/base.html' %}
+
+{% block title %}User Login {% endblock title %}
+
+{% load crispy_forms_tags %}
+ 
+
+{% block main %}
+
+    
+
+    <style>
+        #signin {
+
+            border-radius: 10%;
+            background-color: rgb(37, 35, 131);
+            height: 40px;
+            width: 80px;
+            padding: 0px;
+
+        }
+
+        #signin:hover{
+
+            background-color: rgb(47, 86, 160);
+        }
+
+
+    </style>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <section class="sign-in">
+                <div class="container">
+                    <div class="signin-content">
+                        <div class="signin-image">
+                            <figure><img src="{% static 'images/signin-image.jpg' %}" alt="sing up image"></figure>
+                            <a href="/user-register" class="signup-image-link">Create an account</a>
+                        </div>
+
+                        <div class="signin-form">
+                            <h2 class="form-title">Sign In</h2>
+                            <form method="POST" class="register-form" id="login-form">
+                            {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                    <!-- <input type="text" name="your_name" id="your_name" placeholder="Username"/> -->
+                                    <div id="your_name">
+                                        {{form.username}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <!-- <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                                    -->
+                                    <div id="your_pass">
+                                        {{form.password}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                    <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                                </div>
+                                <div class="form-group form-button">
+                                    <!-- <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/> -->
+                                    <button class="form-submit" id="signin" name="signin" type="submit">Log In</button>
+
+                                </div>
+                            </form>
+                            <div class="social-login">
+                                <span class="social-label">Or login with</span>
+                                <ul class="socials">
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+   <!-- <form action="" method="post">
+
+
+
+
+        {% csrf_token %}
+         {{ form|crispy }}
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+    <br>
+    <a href="{% url 'user-register' %}">Register</a> -->
+
+    <script>
+        var myobj = document.getElementById("app");
+        myobj.classList.remove("container");
+    </script>
+
+{% endblock main %} 
+
+

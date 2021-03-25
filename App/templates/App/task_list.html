@@ -1,0 +1,84 @@
+{% extends 'App/base.html' %}
+
+
+{% block title %}Task List{% endblock title %}
+{% block main %}
+
+
+
+
+    {% include 'App/Components/head.html' %}
+
+    <style>
+        #search_input {
+
+            border-radius: 10%;
+            border-width: 0ch;
+        }
+
+
+    </style>
+
+
+
+    <h1 style="text-align: left;margin-left:-10px"><span class="badge ">Task List</span></h1>
+
+
+    <form action="" method="get">
+
+        <input placeholder="Task Name"  type="text" name="search-area" value="{{search_input}}" size="20" id="search_input" style="height: 30px;">
+       <!-- <div style="border: 1px solid #DDD;">
+             <img src="icon.png"/>
+            <i class="fas fa-search"></i>
+            <input style="border: none;" placeholder="Task Name" type="text" name="search-area" value="{{search_input}}" size="30" id="" style="height: 30px;" />
+        </div> -->
+
+
+        <button class="btn" id="search_button" style="margin-left: -5%; background-color:transparent; margin-top: -10px; height: 20px;"  type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    <a class="btn btn-primary" style="float:right;margin-top: -30px;" href="/task-create/"> <i class="fas fa-plus-circle"></i> Create Task </a>
+
+    
+    <table class="table mt-5">
+        <thead class="thead-dark">
+            <tr>
+                <th>Items</th>
+
+                <th>Completed</th>
+                <th>Actions</th>
+
+            </tr>
+            {% for task in tasks %}
+        </thead>
+
+        <tr>
+            {% if task.complete == True %}
+            <td><strike> {{task.title}} </strike>&nbsp;&nbsp;</td>
+
+            {% else %}
+            <td>{{task.title}} </td>
+            {% endif %}
+
+            <!-- <td> <a href="{% url 'task_detail' task.id %}" >View</a></td> -->
+            {% if task.complete == True %}
+            <td> <i class="fas fa-check"></i> </td>
+            {% else %}
+            <td> <i class="fas fa-times"></i> </td>
+            {% endif %}
+            <td> <a href="{% url 'task_update' task.id %}"> <i class="fa fa-eye"></i></a>
+                <a href="{% url 'task_delete' task.id %}"> <i class="fa fa-trash"></i> </a></td>
+
+        </tr>
+        {% empty %}
+        <h3>No Items Found !!</h3>
+
+
+
+
+        {% endfor %}
+
+
+        </table>
+        <h3>Total Incomplete Tasks = {{count}}</h3>
+
+{% endblock main %}

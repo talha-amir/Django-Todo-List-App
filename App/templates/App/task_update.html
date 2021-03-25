@@ -1,0 +1,32 @@
+{% extends 'App/base.html' %}
+
+
+{% block title %}Update Task{% endblock title %}
+
+{% block main %}
+
+    {% include 'App/Components/head.html' %}
+    {% load crispy_forms_tags %}
+
+    
+
+    <h1>Task Update</h1>
+    {% include 'App/Components/return_to_main.html' %}
+        <form action="" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-6">
+                {{form.title|as_crispy_field}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{form.description|as_crispy_field}}
+            </div>
+        </div>
+
+        {{form.complete|as_crispy_field}}
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+{% endblock main %}

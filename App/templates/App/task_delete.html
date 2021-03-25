@@ -1,0 +1,25 @@
+{% extends 'App/base.html' %}
+
+
+
+{% block title %}Task Delete{% endblock title %}
+
+
+{% block main %}
+
+    {% include 'App/Components/head.html' %}
+
+
+
+    <h1>Task Delete</h1>
+        {% include 'App/Components/return_to_main.html' %}
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <h6>Are you sure you want to delete it ??</h6><br>
+        {{form.as_p}}
+        <button class="btn btn-danger" type="submit">Delete</button>
+
+    </form>
+
+{% endblock main %}
